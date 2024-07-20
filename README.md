@@ -28,13 +28,11 @@ python main.py
 
 ```json
 [
-  ...
   {
     "gstin_no": "<GSTIN No>",
     "pan_no": "<PAN No>",
     "name": "<Name>",
     "address": "<Permanent Address>"
   }
-  ...
 ]
 ```
