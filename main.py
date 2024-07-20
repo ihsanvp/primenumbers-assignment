@@ -37,10 +37,10 @@ def scrape_projects(limit = None):
     driver = init_driver()
 
     url = 'https://hprera.nic.in/PublicDashboard'
-    print(f"requesting {url}")
+    print(f"requesting url: {url}")
     driver.get(url)
 
-    print("waiting for data...")
+    print("waiting for data to load...")
     WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.ID, 'reg-Projects')))
     sleep(1)
 
@@ -55,7 +55,7 @@ def scrape_projects(limit = None):
     print(f"retrieving {limit} projects...")
     for i in range(limit):
         button = project_detail_buttons[i]
-        print(f"fetching {button.text}")
+        print(f"fetching project: Ref No({button.text})")
         projects.append(get_project_data(driver, button, modal_close_button))
 
     driver.quit()
