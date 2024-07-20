@@ -30,10 +30,10 @@ python main.py
 [
   ...
   {
-    "gstin_no": <GSTIN No>,
-    "pan_no": <PAN No>,
-    "name": <Name>,
-    "address": <Permanent Address>
+    "gstin_no": "<GSTIN No>",
+    "pan_no": "<PAN No>",
+    "name": "<Name>",
+    "address": "<Permanent Address>"
   }
   ...
 ]
