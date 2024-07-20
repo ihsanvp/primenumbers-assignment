@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
-from time import sleep
 import json
 
 def init_driver() -> webdriver.Chrome:
@@ -17,7 +16,6 @@ def get_project_data(driver, target_button, close_button):
     target_button.click()
     WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, 'project-menu-html')))
     WebDriverWait(driver, 10).until(EC.visibility_of_any_elements_located((By.XPATH, "//tr[td[text()='PAN No.']]/td[2]/span")))
-    sleep(0.5)
 
     parent = driver.find_element(By.ID, 'project-menu-html')
     details = {
@@ -41,8 +39,7 @@ def scrape_projects(limit = None):
     driver.get(url)
 
     print("waiting for data to load...")
-    WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.ID, 'reg-Projects')))
-    sleep(1)
+    WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, 'reg-Projects')))
 
     projects = []
     project_detail_buttons = driver.find_elements(By.CSS_SELECTOR, 'a[title="View Application"]')
