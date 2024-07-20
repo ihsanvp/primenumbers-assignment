@@ -19,7 +19,7 @@ def get_project_data(driver, target_button, close_button):
 
     parent = driver.find_element(By.ID, 'modal-data-display-tab_project_main-content')
     details = {
-        'gst_no': parent.find_element(By.XPATH, "//tr[td[text()='GSTIN No.']]/td[2]/span").text,
+        'gstin_no': parent.find_element(By.XPATH, "//tr[td[text()='GSTIN No.']]/td[2]/span").text,
         'pan_no': parent.find_element(By.XPATH, "//tr[td[text()='PAN No.']]/td[2]/span").text,
         'name': parent.find_element(By.XPATH, "//tr[td[text()='Name']]/td[2]").text,
         'address': parent.find_element(By.XPATH, "//tr[td[text()='Permanent Address']]/td[2]/span").text

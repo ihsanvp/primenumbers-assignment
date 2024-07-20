@@ -21,3 +21,20 @@ Run program
 ```bash
 python main.py
 ```
+
+### Output
+
+`data.json`
+
+```json
+[
+  ...
+  {
+    "gstin_no": <GSTIN No>,
+    "pan_no": <PAN No>,
+    "name": <Name>,
+    "address": <Permanent Address>
+  }
+  ...
+]
+```
