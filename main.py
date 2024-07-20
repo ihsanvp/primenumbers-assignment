@@ -19,10 +19,10 @@ def get_project_data(driver, target_button, close_button):
 
     parent = driver.find_element(By.ID, 'modal-data-display-tab_project_main-content')
     details = {
-        'GSTIN No': parent.find_element(By.XPATH, "//tr[td[text()='GSTIN No.']]/td[2]/span").text,
-        'PAN No': parent.find_element(By.XPATH, "//tr[td[text()='PAN No.']]/td[2]/span").text,
-        'Name': parent.find_element(By.XPATH, "//tr[td[text()='Name']]/td[2]").text,
-        'Permanent Address': parent.find_element(By.XPATH, "//tr[td[text()='Permanent Address']]/td[2]/span").text
+        'gst_no': parent.find_element(By.XPATH, "//tr[td[text()='GSTIN No.']]/td[2]/span").text,
+        'pan_no': parent.find_element(By.XPATH, "//tr[td[text()='PAN No.']]/td[2]/span").text,
+        'name': parent.find_element(By.XPATH, "//tr[td[text()='Name']]/td[2]").text,
+        'address': parent.find_element(By.XPATH, "//tr[td[text()='Permanent Address']]/td[2]/span").text
     }
 
     close_button.click()
@@ -30,7 +30,7 @@ def get_project_data(driver, target_button, close_button):
     return details
 
 
-def scrape_projects(limit):
+def scrape_projects(limit = None):
     print("Initializing...")
     driver = init_driver()
 
@@ -48,6 +48,9 @@ def scrape_projects(limit):
     modal_close_button = driver.find_element(By.XPATH, '//div[@id="modal-data-display-tab_project_main"]/div/div/div[1]/button')
 
     print(f"found {len(project_detail_buttons)} projects")
+    if limit is None:
+        limit = len(project_detail_buttons)
+
     print(f"retrieving {limit} projects...")
     for i in range(limit):
         button = project_detail_buttons[i]
